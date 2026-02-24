@@ -1,0 +1,99 @@
+# RAG MCP Configuration Settings
+# This file contains all configuration settings for the RAG MCP system
+
+# LLM Configuration
+llm:
+  provider: azure  # azure, openai, ollama, deepseek, anthropic
+  model: gpt-4o
+  api_key: ${AZURE_OPENAI_API_KEY}
+  api_base: ${AZURE_OPENAI_ENDPOINT}
+  api_version: 2024-02-15-preview
+  temperature: 0.7
+  max_tokens: 2000
+
+# Embedding Configuration
+embedding:
+  provider: azure  # azure, openai, ollama
+  model: text-embedding-3-large
+  api_key: ${AZURE_OPENAI_API_KEY}
+  api_base: ${AZURE_OPENAI_ENDPOINT}
+  api_version: 2024-02-15-preview
+  dimension: 3072
+  batch_size: 100
+
+# Vision LLM Configuration (for image analysis)
+vision:
+  provider: azure  # azure, openai, anthropic
+  model: gpt-4o
+  api_key: ${AZURE_OPENAI_API_KEY}
+  api_base: ${AZURE_OPENAI_ENDPOINT}
+  api_version: 2024-02-15-preview
+  max_tokens: 1000
+
+# Vector Store Configuration
+vector_store:
+  backend: chroma  # chroma, qdrant, milvus
+  persist_directory: data/vector_store
+  collection_name: ragmcp_documents
+
+  # Chroma-specific settings
+  chroma:
+    host: localhost
+    port: 8000
+
+  # Qdrant-specific settings
+  qdrant:
+    host: localhost
+    port: 6333
+    grpc_port: 6334
+    api_key: ${QDRANT_API_KEY:}
+
+  # Milvus-specific settings
+  milvus:
+    host: localhost
+    port: 19530
+    index_type: HNSW
+    metric_type: COSINE
+
+# Retrieval Configuration
+retrieval:
+  top_k: 10
+  rerank_backend: none  # none, cross_encoder, llm
+  rerank_top_k: 5
+  chunk_size: 1000
+  chunk_overlap: 200
+
+  # Cross-encoder reranker settings
+  cross_encoder:
+    model: BAAI/bge-reranker-v2-m3
+    device: cpu  # cpu, cuda
+
+  # LLM-based reranker settings
+  llm_reranker:
+    model: gpt-4o
+    max_chunks: 20
+
+# Evaluation Configuration
+evaluation:
+  enabled: true
+  metrics:
+    - retrieval_accuracy
+    - answer_relevance
+    - faithfulness
+  test_dataset: data/evaluation/test_queries.jsonl
+
+# Observability Configuration
+observability:
+  logging:
+    level: INFO  # DEBUG, INFO, WARNING, ERROR
+    file: logs/ragmcp.log
+    format: json  # json, text
+
+  tracing:
+    enabled: false
+    exporter: console  # console, otlp
+    otlp_endpoint: http://localhost:4317
+
+  metrics:
+    enabled: true
+    port: 9090

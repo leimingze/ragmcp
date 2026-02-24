@@ -481,7 +481,7 @@
 
 #### Module 1.7: 配置管理实现
 
-- [ ] ⏳ **1.7.1 实现 settings.yaml 配置文件** 🔴 P0
+- [x] ✅ **1.7.1 实现 settings.yaml 配置文件** 🔴 P0
   - **任务描述**: 定义统一的配置文件格式
 
   - **TDD Cycle**:
@@ -501,14 +501,38 @@
     - **GREEN**: 确保配置文件结构完整
     - **Verify GREEN**: 运行测试确认通过
 
+    **Test 3: LLM 配置验证**
+    - **RED**:
+      - 编写 `test_llm_section_has_required_fields()`
+      - 断言: llm 配置包含 provider 和 model 字段，provider 是有效值
+    - **Verify RED**: 运行测试确认失败
+    - **GREEN**: 确保 llm 配置结构完整
+    - **Verify GREEN**: 运行测试确认通过
+
+    **Test 4: VectorStore 配置验证**
+    - **RED**:
+      - 编写 `test_vector_store_section_has_backend()`
+      - 断言: vector_store 配置包含 backend 字段
+    - **Verify RED**: 运行测试确认失败
+    - **GREEN**: 确保 vector_store 配置结构完整
+    - **Verify GREEN**: 运行测试确认通过
+
+    **Test 5: Retrieval 配置验证**
+    - **RED**:
+      - 编写 `test_retrieval_section_has_rerank_config()`
+      - 断言: retrieval 配置包含 rerank_backend 字段
+    - **Verify RED**: 运行测试确认失败
+    - **GREEN**: 确保 retrieval 配置结构完整
+    - **Verify GREEN**: 运行测试确认通过
+
   - **验收标准**:
-    - [ ] 每个测试都先失败，观察失败原因正确
-    - [ ] 配置文件结构清晰
-    - [ ] 包含所有必需的配置项
-    - [ ] 测试输出无警告/错误
+    - [x] 每个测试都先失败，观察失败原因正确
+    - [x] 配置文件结构清晰
+    - [x] 包含所有必需的配置项
+    - [x] 测试输出无警告/错误
   - **devspec 参考**: 第 288-309 行
 
-- [ ] ⏳ **1.7.2 实现配置解析器** 🔴 P0
+- [x] ✅ **1.7.2 实现配置解析器** 🔴 P0
   - **任务描述**: 实现 YAML 配置文件解析
 
   - **TDD Cycle**:
@@ -536,12 +560,20 @@
     - **GREEN**: 添加验证逻辑
     - **Verify GREEN**: 运行测试确认通过
 
+    **Test 4: Config 对象属性访问**
+    - **RED**:
+      - 编写 `test_config_has_required_sections()`
+      - 断言: Config 对象暴露所有必需节作为属性
+    - **Verify RED**: 运行测试确认失败
+    - **GREEN**: 确保 Config 类实现正确
+    - **Verify GREEN**: 运行测试确认通过
+
   - **验收标准**:
-    - [ ] 每个测试都先失败，观察失败原因正确
-    - [ ] 能够正确解析 YAML
-    - [ ] 配置项映射正确
-    - [ ] 缺失配置有合理默认值
-    - [ ] 测试输出无警告/错误
+    - [x] 每个测试都先失败，观察失败原因正确
+    - [x] 能够正确解析 YAML
+    - [x] 配置项映射正确
+    - [x] 缺失配置有合理默认值
+    - [x] 测试输出无警告/错误
   - **devspec 参考**: 第 287 行（配置管理与切换流程）
 
 #### Module 1.8: 中间层实现
