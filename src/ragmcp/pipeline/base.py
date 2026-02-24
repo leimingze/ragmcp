@@ -69,3 +69,23 @@ class Splitter(ABC):
             A list of Chunk objects with positioning metadata.
         """
         ...
+
+
+class Transform(ABC):
+    """Abstract base class for chunk transformation implementations.
+
+    Provides unified interface for transforming chunks with additional
+    processing like OCR, Image Captioning, HTML cleaning, etc.
+    """
+
+    @abstractmethod
+    def transform(self, chunk: Chunk) -> Chunk:
+        """Transform a chunk with additional processing.
+
+        Args:
+            chunk: The Chunk to transform.
+
+        Returns:
+            An enhanced Chunk with additional metadata or modified content.
+        """
+        ...
