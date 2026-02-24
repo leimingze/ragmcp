@@ -1,7 +1,6 @@
 """Tests for Vision LLM abstractions."""
 
-import pytest
-from ragmcp.llm.base import Message, Response
+from ragmcp.llm.base import Response
 from ragmcp.vision.base import BaseVisionLLM, MultimodalMessage
 
 
@@ -11,6 +10,7 @@ class TestBaseVisionLLMInheritance:
     def test_base_vision_llm_is_llm_client_subclass(self):
         """BaseVisionLLM should be a subclass of LLMClient."""
         from ragmcp.llm.base import LLMClient
+
         assert issubclass(BaseVisionLLM, LLMClient)
 
 
@@ -37,6 +37,7 @@ class TestVisionLLMAcceptsMultimodalMessage:
 
     def test_chat_accepts_multimodal_message(self):
         """chat() should accept messages with images."""
+
         class MockVisionLLM(BaseVisionLLM):
             def chat(self, messages: list[MultimodalMessage]) -> Response:
                 return Response(content=f"Processed {len(messages)} messages")
@@ -48,14 +49,16 @@ class TestVisionLLMAcceptsMultimodalMessage:
         assert response1.content == "Processed 1 messages"
 
         # Message with images
-        response2 = client.chat([
-            MultimodalMessage(text="what's this?", images=["image1.png"])
-        ])
+        response2 = client.chat(
+            [MultimodalMessage(text="what's this?", images=["image1.png"])]
+        )
         assert response2.content == "Processed 1 messages"
 
         # Mixed content
-        response3 = client.chat([
-            MultimodalMessage(text="describe", images=["img1.png", "img2.png"]),
-            MultimodalMessage(text="and this", images=[])
-        ])
+        response3 = client.chat(
+            [
+                MultimodalMessage(text="describe", images=["img1.png", "img2.png"]),
+                MultimodalMessage(text="and this", images=[]),
+            ]
+        )
         assert response3.content == "Processed 2 messages"

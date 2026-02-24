@@ -1,6 +1,7 @@
 """Tests for Transform abstractions."""
 
 import pytest
+
 from ragmcp.pipeline.base import Chunk, Transform
 
 
@@ -14,6 +15,7 @@ class TestTransformAbstractClass:
 
     def test_transform_has_transform_method(self):
         """Subclass must implement transform() method."""
+
         class IncompleteTransform(Transform):
             pass  # Missing transform() implementation
 
@@ -26,6 +28,7 @@ class TestTransformMethods:
 
     def test_transform_accepts_chunk(self):
         """transform() should accept a Chunk as input."""
+
         class MockTransform(Transform):
             def transform(self, chunk):
                 return chunk
@@ -39,6 +42,7 @@ class TestTransformMethods:
 
     def test_transform_returns_enhanced_chunk(self):
         """transform() should return an enhanced Chunk with additional metadata."""
+
         class ImageCaptionTransform(Transform):
             def transform(self, chunk):
                 # Simulate adding image caption to metadata
@@ -59,6 +63,7 @@ class TestTransformMethods:
 
     def test_transform_can_modify_text(self):
         """transform() can modify the chunk text content."""
+
         class HTMLCleanerTransform(Transform):
             def transform(self, chunk):
                 # Simulate HTML cleaning
@@ -66,7 +71,9 @@ class TestTransformMethods:
                 return Chunk(text=cleaned_text, metadata=chunk.metadata)
 
         transformer = HTMLCleanerTransform()
-        chunk = Chunk(text="<tag>Content</tag> with tags", metadata={"source": "doc.html"})
+        chunk = Chunk(
+            text="<tag>Content</tag> with tags", metadata={"source": "doc.html"}
+        )
 
         result = transformer.transform(chunk)
 
@@ -75,6 +82,7 @@ class TestTransformMethods:
 
     def test_transform_preserves_positioning_metadata(self):
         """transform() should preserve positioning information in metadata."""
+
         class MetadataEnricherTransform(Transform):
             def transform(self, chunk):
                 new_metadata = dict(chunk.metadata)

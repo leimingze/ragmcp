@@ -1,6 +1,7 @@
 """Tests for Loader abstractions."""
 
 import pytest
+
 from ragmcp.pipeline.base import Document, Loader
 
 
@@ -45,6 +46,7 @@ class TestLoaderAbstractClass:
 
     def test_loader_has_load_method(self):
         """Subclass must implement load() method."""
+
         class IncompleteLoader(Loader):
             pass  # Missing load() implementation
 
@@ -57,6 +59,7 @@ class TestLoaderMethods:
 
     def test_load_returns_document(self):
         """load() should return a Document instance."""
+
         class MockLoader(Loader):
             def load(self, file_path):
                 return Document(
@@ -73,6 +76,7 @@ class TestLoaderMethods:
 
     def test_load_accepts_file_path(self):
         """load() should accept a file path string."""
+
         class MockLoader(Loader):
             def load(self, file_path):
                 return Document(

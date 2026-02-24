@@ -1,7 +1,7 @@
 """Evaluation base abstractions."""
 
 from abc import ABC, abstractmethod
-from typing import Any, Dict
+from typing import Any
 
 
 class Evaluator(ABC):
@@ -18,7 +18,7 @@ class Evaluator(ABC):
         retrieved_chunks: list[Any],
         generated_answer: str,
         ground_truth: str,
-    ) -> Dict[str, float]:
+    ) -> dict[str, float]:
         """Evaluate the quality of retrieval and generation.
 
         Args:

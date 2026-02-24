@@ -2,6 +2,7 @@
 
 import numpy as np
 import pytest
+
 from ragmcp.vector_store.base import VectorStore
 
 
@@ -15,6 +16,7 @@ class TestVectorStoreAbstractClass:
 
     def test_vector_store_has_insert_method(self):
         """Subclass must implement insert() method."""
+
         class IncompleteVectorStore(VectorStore):
             pass  # Missing insert() implementation
 
@@ -23,6 +25,7 @@ class TestVectorStoreAbstractClass:
 
     def test_vector_store_has_query_method(self):
         """Subclass must implement query() method."""
+
         class IncompleteVectorStore(VectorStore):
             def insert(self, vectors, payloads):
                 pass
@@ -32,9 +35,11 @@ class TestVectorStoreAbstractClass:
 
     def test_vector_store_has_delete_and_upsert_methods(self):
         """Subclass must implement delete() and upsert() methods."""
+
         class IncompleteVectorStore(VectorStore):
             def insert(self, vectors, payloads):
                 pass
+
             def query(self, query_vector, top_k):
                 pass
 
@@ -47,6 +52,7 @@ class TestVectorStoreMethods:
 
     def test_insert_method_works(self):
         """insert() should store vectors with payloads."""
+
         class MockVectorStore(VectorStore):
             def __init__(self):
                 self.data = []
@@ -74,6 +80,7 @@ class TestVectorStoreMethods:
 
     def test_query_method_works(self):
         """query() should return top-k results."""
+
         class MockVectorStore(VectorStore):
             def insert(self, vectors, payloads):
                 pass
@@ -98,6 +105,7 @@ class TestVectorStoreMethods:
 
     def test_delete_and_upsert_methods_work(self):
         """delete() and upsert() should work correctly."""
+
         class MockVectorStore(VectorStore):
             def insert(self, vectors, payloads):
                 return 0

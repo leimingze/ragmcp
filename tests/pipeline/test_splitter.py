@@ -1,7 +1,8 @@
 """Tests for Splitter abstractions."""
 
 import pytest
-from ragmcp.pipeline.base import Document, Chunk, Splitter
+
+from ragmcp.pipeline.base import Chunk, Document, Splitter
 
 
 class TestChunk:
@@ -40,6 +41,7 @@ class TestSplitterAbstractClass:
 
     def test_splitter_has_split_method(self):
         """Subclass must implement split() method."""
+
         class IncompleteSplitter(Splitter):
             pass  # Missing split() implementation
 
@@ -52,6 +54,7 @@ class TestSplitterMethods:
 
     def test_split_returns_list_of_chunks(self):
         """split() should return a list of Chunk instances."""
+
         class MockSplitter(Splitter):
             def split(self, document):
                 return [
@@ -88,6 +91,7 @@ class TestSplitterMethods:
 
     def test_split_accepts_document(self):
         """split() should accept a Document as input."""
+
         class MockSplitter(Splitter):
             def split(self, document):
                 return [

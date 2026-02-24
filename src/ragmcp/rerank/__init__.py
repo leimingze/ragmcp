@@ -1,5 +1,5 @@
 """Reranker module."""
 
-from ragmcp.rerank.base import Reranker, RankedChunk
+from ragmcp.rerank.base import RankedChunk, Reranker
 
 __all__ = ["Reranker", "RankedChunk"]

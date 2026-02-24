@@ -1,7 +1,8 @@
 """Tests for Reranker abstractions."""
 
 import pytest
-from ragmcp.rerank.base import Reranker, RankedChunk
+
+from ragmcp.rerank.base import RankedChunk, Reranker
 
 
 class TestRerankerAbstractClass:
@@ -14,6 +15,7 @@ class TestRerankerAbstractClass:
 
     def test_reranker_has_rerank_method(self):
         """Subclass must implement rerank() method."""
+
         class IncompleteReranker(Reranker):
             pass  # Missing rerank() implementation
 
@@ -26,6 +28,7 @@ class TestRerankerMethods:
 
     def test_rerank_method_works(self):
         """rerank() should return ranked chunks with scores."""
+
         class MockReranker(Reranker):
             def rerank(self, query, chunks, top_k=None):
                 # Simple mock: return chunks with descending scores

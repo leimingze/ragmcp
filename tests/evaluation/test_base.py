@@ -1,6 +1,7 @@
 """Tests for Evaluator abstractions."""
 
 import pytest
+
 from ragmcp.evaluation.base import Evaluator
 
 
@@ -14,6 +15,7 @@ class TestEvaluatorAbstractClass:
 
     def test_evaluator_has_evaluate_method(self):
         """Subclass must implement evaluate() method."""
+
         class IncompleteEvaluator(Evaluator):
             pass  # Missing evaluate() implementation
 
@@ -26,6 +28,7 @@ class TestEvaluatorMethods:
 
     def test_evaluate_method_exists(self):
         """evaluate() method should exist on subclasses."""
+
         class MockEvaluator(Evaluator):
             def evaluate(
                 self,
@@ -42,6 +45,7 @@ class TestEvaluatorMethods:
 
     def test_evaluate_returns_metrics_dict(self):
         """evaluate() should return a dict with string keys and float values."""
+
         class MockEvaluator(Evaluator):
             def evaluate(
                 self,
@@ -71,6 +75,7 @@ class TestEvaluatorMethods:
 
     def test_evaluate_accepts_all_parameters(self):
         """evaluate() should accept all required parameters."""
+
         class MockEvaluator(Evaluator):
             def evaluate(
                 self,

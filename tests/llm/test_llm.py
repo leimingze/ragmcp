@@ -1,6 +1,7 @@
 """Tests for LLM base abstractions."""
 
 import pytest
+
 from ragmcp.llm.base import LLMClient, Message, Response
 
 
@@ -14,6 +15,7 @@ class TestLLMClientAbstractClass:
 
     def test_subclass_without_chat_method_raises_error(self):
         """Subclass must implement chat() method."""
+
         class IncompleteLLMClient(LLMClient):
             pass  # Missing chat() implementation
 
@@ -22,6 +24,7 @@ class TestLLMClientAbstractClass:
 
     def test_subclass_with_chat_method_can_be_instantiated(self):
         """Subclass with chat() can be instantiated and used."""
+
         class MockLLMClient(LLMClient):
             def chat(self, messages: list[Message]) -> Response:
                 return Response(content="mock response")

@@ -2,7 +2,7 @@
 
 from abc import ABC, abstractmethod
 from dataclasses import dataclass
-from typing import Any, Optional
+from typing import Any
 
 
 @dataclass
@@ -30,7 +30,7 @@ class Reranker(ABC):
         self,
         query: str,
         chunks: list[Any],
-        top_k: Optional[int] = None,
+        top_k: int | None = None,
     ) -> list[RankedChunk]:
         """Rerank chunks by relevance to the query.
 

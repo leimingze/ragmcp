@@ -2,6 +2,7 @@
 
 import numpy as np
 import pytest
+
 from ragmcp.embedding.base import EmbeddingClient
 
 
@@ -15,6 +16,7 @@ class TestEmbeddingClientAbstractClass:
 
     def test_subclass_without_embed_raises_error(self):
         """Subclass must implement embed() method."""
+
         class IncompleteEmbeddingClient(EmbeddingClient):
             pass  # Missing embed() implementation
 
@@ -23,6 +25,7 @@ class TestEmbeddingClientAbstractClass:
 
     def test_embed_accepts_batch_and_returns_vectors(self):
         """embed() accepts batch texts and returns vector list."""
+
         class MockEmbeddingClient(EmbeddingClient):
             def embed(self, texts: list[str]) -> list[np.ndarray]:
                 # Return fixed vectors for testing
@@ -37,6 +40,7 @@ class TestEmbeddingClientAbstractClass:
 
     def test_vectors_are_l2_normalized(self):
         """Returned vectors should be L2 normalized."""
+
         class MockEmbeddingClient(EmbeddingClient):
             def embed(self, texts: list[str]) -> list[np.ndarray]:
                 # Return normalized vectors

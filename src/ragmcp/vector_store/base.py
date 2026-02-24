@@ -1,6 +1,7 @@
 """VectorStore base abstractions."""
 
 from abc import ABC, abstractmethod
+from typing import Any
 
 import numpy as np
 
@@ -26,9 +27,7 @@ class VectorStore(ABC):
         ...
 
     @abstractmethod
-    def query(
-        self, query_vector: np.ndarray, top_k: int
-    ) -> list[dict]:
+    def query(self, query_vector: np.ndarray, top_k: int) -> list[dict]:
         """Query the vector store for similar vectors.
 
         Args:
@@ -41,7 +40,7 @@ class VectorStore(ABC):
         ...
 
     @abstractmethod
-    def delete(self, ids: list) -> int:
+    def delete(self, ids: list[Any]) -> int:
         """Delete vectors by their IDs.
 
         Args:

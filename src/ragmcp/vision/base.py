@@ -1,9 +1,9 @@
 """Vision LLM base abstractions."""
 
 from abc import abstractmethod
-
-from ragmcp.llm.base import LLMClient, Message, Response
 from dataclasses import dataclass
+
+from ragmcp.llm.base import LLMClient, Response
 
 
 @dataclass
