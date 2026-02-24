@@ -772,7 +772,7 @@
     - [x] 测试输出无警告/错误
   - **devspec 参考**: 第 22 行
 
-- [ ] ⏳ **2.1.3 实现 OllamaLLM** 🟡 P1
+- [x] ✅ **2.1.3 实现 OllamaLLM** 🟡 P1
   - **任务描述**: 实现本地 Ollama 部署的 LLMClient
 
   - **TDD Cycle**:
@@ -781,13 +781,13 @@
       - 编写 `test_ollama_communicates_via_http()`
       - Mock Ollama HTTP 端点
       - 断言: chat() 发送 HTTP 请求到正确端点
-    - **Verify RED**: 运行测试确认失败
+    - **Verify RED**: 运行测试确认失败 ✅ (ImportError: cannot import name 'OllamaLLM')
     - **GREEN**: 实现 OllamaLLM 类
-    - **Verify GREEN**: 运行测试确认通过
+    - **Verify GREEN**: 运行测试确认通过 ✅ (7 passed)
 
   - **验收标准**:
-    - [ ] 每个测试都先失败，观察失败原因正确
-    - [ ] 测试输出无警告/错误
+    - [x] 每个测试都先失败，观察失败原因正确
+    - [x] 测试输出无警告/错误
   - **devspec 参考**: 第 23 行
 
 - [ ] ⏳ **2.1.4 实现 DeepSeekLLM** 🟢 P2
