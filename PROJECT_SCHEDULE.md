@@ -15,7 +15,7 @@
 
 #### Module 1.1: LLM 与 Embedding 接口定义
 
-- [ ] ⏳ **1.1.1 定义 LLMClient 抽象接口** 🔴 P0
+- [x] ✅ **1.1.1 定义 LLMClient 抽象接口** 🔴 P0
   - **任务描述**: 定义 LLM 调用的统一抽象接口，屏蔽不同 Provider 的认证方式与请求格式差异
 
   - **TDD Cycle**:
