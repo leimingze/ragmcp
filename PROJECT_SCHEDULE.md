@@ -807,16 +807,42 @@
     - [x] 测试输出无警告/错误
   - **devspec 参考**: 第 24 行
 
-- [ ] ⏳ **2.1.5 实现 ClaudeLLM** 🟢 P2
+- [x] ✅ **2.1.5 实现 ClaudeLLM** 🟢 P2
+  - **任务描述**: 实现 Anthropic Claude 的 LLMClient
+
+  - **TDD Cycle**:
+    **Test 1: 继承和基础实现**
+    - **RED**:
+      - 编写 `test_claude_is_llm_client()`
+      - 断言: ClaudeLLM 是 LLMClient 的实例
+    - **Verify RED**: 运行测试确认失败 ✅ (ImportError)
+    - **GREEN**: 创建 ClaudeLLM 类
+    - **Verify GREEN**: 运行测试确认通过 ✅ (9 passed)
+
+  - **验收标准**:
+    - [x] 每个测试都先失败，观察失败原因正确
+    - [x] 测试输出无警告/错误
+  - **devspec 参考**: 第 24 行
   - **任务描述**: 实现各 Provider 的 LLMClient（格式同上，遵循 TDD Cycle）
   - **TDD Cycle**: （参照 2.1.1 格式）
   - **验收标准**: 每个测试先失败，测试输出无警告/错误
   - **devspec 参考**: 第 24 行
 
-- [ ] ⏳ **2.1.6 实现 ZhipuLLM** 🟢 P2
-  - **任务描述**: 实现各 Provider 的 LLMClient（格式同上，遵循 TDD Cycle）
-  - **TDD Cycle**: （参照 2.1.1 格式）
-  - **验收标准**: 每个测试先失败，测试输出无警告/错误
+- [x] ✅ **2.1.6 实现 ZhipuLLM** 🟢 P2
+  - **任务描述**: 实现智谱AI (Zhipu) 的 LLMClient
+
+  - **TDD Cycle**:
+    **Test 1: 继承和基础实现**
+    - **RED**:
+      - 编写 `test_zhipu_is_llm_client()`
+      - 断言: ZhipuLLM 是 LLMClient 的实例
+    - **Verify RED**: 运行测试确认失败 ✅ (ImportError)
+    - **GREEN**: 创建 ZhipuLLM 类
+    - **Verify GREEN**: 运行测试确认通过 ✅ (7 passed)
+
+  - **验收标准**:
+    - [x] 每个测试都先失败，观察失败原因正确
+    - [x] 测试输出无警告/错误
   - **devspec 参考**: 第 24 行
 
 #### Module 2.2: Embedding Provider 实现
